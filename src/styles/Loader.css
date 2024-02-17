@@ -1,0 +1,13 @@
+.loader {
+    /* height: calc(100vh - 64px); */
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.loader-container {
+    font-size: 108px;
+}

@@ -1,0 +1,99 @@
+.badge-image img {
+    width: 80px;
+    margin-inline: 15px;
+    margin-block: 10px;
+}
+
+.badgesContainer {
+    display: flex;
+    margin-inline: 15px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: calc(100vh - 450px);
+    overflow-y: scroll;
+}
+
+.badge-card {
+    all: unset;
+
+}
+
+.badge-card:hover {
+    cursor: pointer;
+}
+
+.badgesContainer::-webkit-scrollbar,
+.points-container::-webkit-scrollbar {
+    display: none;
+}
+
+.badgesContainer,
+.points-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.badge-information {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-information div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.img-desc {
+    border-radius: 25px;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    background-color: white;
+}
+
+.img-desc button {
+    position: absolute;
+    top: 20px;
+    left: 260px;
+    background-color: white;
+    border: none;
+    font-size: 18px;
+}
+
+.img-desc button:hover {
+    cursor: pointer;
+}
+
+.first {
+    font-size: 22px;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    margin-block: 10px;
+}
+
+.badge-desc {
+    font-size: 16px;
+    margin-inline: 10px;
+    color: rgba(131, 131, 131, 0.867);
+}
+
+.img-desc p {
+    text-align: center;
+}
+
+.bg-image {
+    filter: blur(8px);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(49, 45, 45, 0.3);
+}
+
+.badge-information img {
+    width: 60px;
+}

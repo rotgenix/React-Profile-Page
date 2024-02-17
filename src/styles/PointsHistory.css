@@ -1,0 +1,22 @@
+/* Badges  */
+.points-container {
+    /* display: flex; */
+    height: calc(100vh - 450px);
+    margin-inline: 15px;
+    overflow-y: scroll;
+    /* overflow: hidden */
+}
+
+.xp-value {
+    background-color: #6f52ffdf;
+    border-radius: 5px;
+    margin-block: 5px;
+    padding: 8px;
+}
+
+.xp-value div {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 3px;
+    color: white;
+}

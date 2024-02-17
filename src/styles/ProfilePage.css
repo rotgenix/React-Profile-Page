@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: "Roboto", sans-serif;
+}
+
+.profile-page-container {
+    height: 100%;
+}
+
+.profile-page {
+    max-width: 450px;
+    margin: auto;
+    height: 100%;
+    background-color: #7052ff;
+    position: relative;
+}
+
+/* Profile page heading  */
+.profile-page-heading {
+    height: 100px;
+    margin-bottom: 25px;
+    display: flex;
+    color: white;
+    font-size: 24px;
+}
+
+.profile-page-heading h3 {
+    max-width: 100px;
+    margin: auto;
+}
+
+/* Profile  */
+.profile {
+    max-width: 420px;
+    height: 100%;
+    margin: auto;
+    background-color: white;
+    margin-inline: 25px;
+    border-radius: 15px 15px 0 0;
+}
+
+/* Profile img name  */
+.profile-img-name img {
+    position: absolute;
+    left: 50%;
+    width: 80px;
+    transform: translate(-50%, -50%);
+}
+
+.profile-img-name h3 {
+    height: 100px;
+    align-items: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    font-size: 26px;
+    padding-top: 25px;
+}
+
+/* point rank level  */
+.points-rank-level {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.points-rank-level div {
+    display: flex;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-content: center;
+    align-items: center;
+    background-color: #7052ff;
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    color: white;
+}
+
+/* mem badge points  */
+.mem-badge-point {
+    margin-inline: 25px;
+    margin-block: 25px;
+    font-size: 16px;
+}
+
+.mem-badge-point ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mem-badge-point ul li {
+    list-style: none;
+}
+
+.mem-badge-point ul li button {
+    all: unset;
+}
+
+.membershipComponent {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 450px);
+}
+
+.membershipComponent div {}
+
+
+.footer {
+    max-width: 450px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    font-size: 22px;
+    color: rgba(131, 131, 131, 0.867);
+    margin-block: 10px;
+}
