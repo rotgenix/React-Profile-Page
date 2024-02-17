@@ -64,6 +64,7 @@ const ProfilePage = () => {
 
             // Profile
             const { data } = await axios.request(profileOptions);
+            console.log(data);
             setProfileImg(data.data.imageUrl);
             setName(data.data.name);
 
