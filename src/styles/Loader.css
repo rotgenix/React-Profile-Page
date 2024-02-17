@@ -1,13 +1,22 @@
 .loader {
-    /* height: calc(100vh - 64px); */
-    height: 300px;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    width: 100%;
+    height: calc(100vh - 450px);
 }
 
-.loader-container {
-    font-size: 108px;
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate-infinite {
+    font-size: 56px;
+    animation: rotate infinite 2s linear;
 }

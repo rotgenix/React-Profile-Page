@@ -4,14 +4,22 @@ const BadgeInformation = ({ badgeInfo, setFinalPosition, finalPosition }) => {
     const [badgeImg, setBadgeImg] = useState('');
     const [badgeDesc, setBadgeDesc] = useState('');
 
-
-    const badgeDetailInitial = {
-        top: "-100px",
+    const badgeDetailFinal = {
+        top: "-500px",
         width: "100%",
         height: "100%",
         transform: "translate(-50%, -50%)",
         left: "50%",
         top: "50%",
+        overflow: "hidden",
+        transition: 'background-color 03s ease-in-out'
+    }
+    const badgeDetailInitial = {
+
+        height: "100%",
+        transform: "translate(-50%, -50%)",
+        left: "50%",
+        top: "-50%",
         overflow: "hidden"
     }
 
@@ -21,7 +29,7 @@ const BadgeInformation = ({ badgeInfo, setFinalPosition, finalPosition }) => {
     })
     return (
         <>
-            <div className='badge-information' style={badgeDetailInitial}>
+            <div className='badge-information' style={finalPosition ? badgeDetailFinal : badgeDetailInitial}>
 
                 <div class="bg-image"></div>
 

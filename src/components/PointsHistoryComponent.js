@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { server } from '../App';
 import '../styles/PointsHistory.css'
+import Loader from './Loader';
 
 const PointsHistoryComponent = () => {
+    const [loader, setLoader] = useState(true);
     const [xp, setXp] = useState([]);
     const pointsHistoryOptions = {
         method: 'GET',
@@ -19,36 +21,38 @@ const PointsHistoryComponent = () => {
         const fetchBadges = async () => {
             const badges = await axios.request(pointsHistoryOptions);
             setXp(badges.data.data);
+            setLoader(false);
         }
         fetchBadges();
-
     }, []);
 
     return (
         <>
-            <div className='points-container'>
-                {
-                    xp.map((value, index) => {
-                        return (
-                            <div className='xp-value' key={index}>
-                                <div className=''>
-                                    <p>XP</p>
-                                    <p>{value.xp}</p>
+            {
+                loader ? <Loader /> : <div className='points-container'>
+                    {
+                        xp.map((value, index) => {
+                            return (
+                                <div className='xp-value' key={index}>
+                                    <div className=''>
+                                        <p>XP</p>
+                                        <p>{value.xp}</p>
 
+                                    </div>
+                                    <div className=''>
+                                        <p>{(value.createdAt).split('T')[0]}</p>
+                                        <p>
+                                            {
+                                                ((value.createdAt).split('T')[1]).split('Z')[0]
+                                            }
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className=''>
-                                    <p>{(value.createdAt).split('T')[0]}</p>
-                                    <p>
-                                        {
-                                            ((value.createdAt).split('T')[1]).split('Z')[0]
-                                        }
-                                    </p>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
+                            )
+                        })
+                    }
+                </div>
+            }
         </>
     )
 }

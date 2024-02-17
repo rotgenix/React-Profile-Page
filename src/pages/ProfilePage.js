@@ -9,9 +9,10 @@ import { RiHomeFill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import { FaShoppingBag } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
+import Loader from '../components/Loader';
 
 const ProfilePage = () => {
-
+    const [loader, setLoader] = useState(true);
     const [profileImg, setProfileImg] = useState('');
     const [name, setName] = useState('');
     const [points, setPoints] = useState(0);
@@ -72,84 +73,87 @@ const ProfilePage = () => {
 
             const rank = await axios.request(rankOptions);
             setRank(rank.data.data.position);
+            setLoader(false);
         }
         fetchProfileData();
     }, []);
 
     return (
         <>
-            <div className='profile-page-container'>
-                {<div className='profile-page'>
+            {
+                loader ? <Loader /> : <div className='profile-page-container'>
+                    {<div className='profile-page'>
 
-                    <div className='profile-page-heading'>
-                        <h3>
-                            Profile
-                        </h3>
-                    </div>
-
-                    <div className='profile'>
-
-                        <div className='profile-img-name'>
-                            <img src={profileImg} />
-                            <h3>{name}</h3>
+                        <div className='profile-page-heading'>
+                            <h3>
+                                Profile
+                            </h3>
                         </div>
 
-                        {/* point rank level  */}
-                        <div className='points-rank-level'>
-                            <div>
-                                <h3>
-                                    {points}
-                                </h3>
-                                <p>
-                                    Points
-                                </p>
+                        <div className='profile'>
+
+                            <div className='profile-img-name'>
+                                <img src={profileImg} />
+                                <h3>{name}</h3>
                             </div>
-                            <div>
-                                <h3>
-                                    #{rank}
-                                </h3>
-                                <p>Rank</p>
+
+                            {/* point rank level  */}
+                            <div className='points-rank-level'>
+                                <div>
+                                    <h3>
+                                        {points}
+                                    </h3>
+                                    <p>
+                                        Points
+                                    </p>
+                                </div>
+                                <div>
+                                    <h3>
+                                        #{rank}
+                                    </h3>
+                                    <p>Rank</p>
+                                </div>
+                                <div>
+                                    <h3>
+                                        {level}
+                                    </h3>
+                                    <p>
+                                        Level
+                                    </p>
+                                </div>
+                            </div >
+
+                            {/* mem badge points  */}
+                            <div className='mem-badge-point' >
+                                <ul className=''>
+                                    <li style={(number === 0) ? memBadgeStyle : null}>
+                                        <button onClick={() => setNumber(0)}>Membership</button>
+                                    </li>
+                                    <li style={(number === 1) ? memBadgeStyle : null}>
+                                        <button onClick={() => setNumber(1)}>Badges</button>
+                                    </li>
+                                    <li style={(number === 2) ? memBadgeStyle : null}>
+                                        <button onClick={() => setNumber(2)}>Point History</button>
+                                    </li>
+                                </ul>
                             </div>
-                            <div>
-                                <h3>
-                                    {level}
-                                </h3>
-                                <p>
-                                    Level
-                                </p>
+
+                            <div className='badges-component-container'>
+                                {
+                                    number === 1 ? <BadgesComponent loading={true} /> : number === 2 ? <PointsHistoryComponent /> : <MembershipComponent />
+                                }
                             </div>
                         </div >
 
-                        {/* mem badge points  */}
-                        <div className='mem-badge-point' >
-                            <ul className=''>
-                                <li style={(number === 0) ? memBadgeStyle : null}>
-                                    <button onClick={() => setNumber(0)}>Membership</button>
-                                </li>
-                                <li style={(number === 1) ? memBadgeStyle : null}>
-                                    <button onClick={() => setNumber(1)}>Badges</button>
-                                </li>
-                                <li style={(number === 2) ? memBadgeStyle : null}>
-                                    <button onClick={() => setNumber(2)}>Point History</button>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className='badges-component-container'>
-                            {
-                                number === 1 ? <BadgesComponent loading={true} /> : number === 2 ? <PointsHistoryComponent /> : <MembershipComponent />
-                            }
-                        </div>
-                    </div >
-
-                </div >}
-                <div className='footer'>
-                    <RiHomeFill />
-                    <FiSearch />
-                    <FaShoppingBag />
-                    <CgProfile />
+                    </div >}
+                    <div className='footer'>
+                        <RiHomeFill />
+                        <FiSearch />
+                        <FaShoppingBag />
+                        <CgProfile />
+                    </div>
                 </div>
-            </div>
+            }
 
         </>
     )

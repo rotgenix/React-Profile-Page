@@ -4,6 +4,7 @@
     margin-block: 10px;
 }
 
+
 .badgesContainer {
     display: flex;
     margin-inline: 15px;
@@ -34,19 +35,21 @@
 }
 
 .badge-information {
+    width: "100%";
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.5s linear;
 }
 
 .badge-information div {
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
+
 }
 
 .img-desc {
@@ -68,6 +71,8 @@
 
 .img-desc button:hover {
     cursor: pointer;
+    transform: scale(0.9);
+    transition: all 0.3s linear;
 }
 
 .first {

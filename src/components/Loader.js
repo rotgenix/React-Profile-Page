@@ -1,19 +1,20 @@
 import React from 'react'
 import '../styles/Loader.css'
+import { FaCircleNotch } from "react-icons/fa6";
 
 const Loader = () => {
-    return (
-        <>
+    const loaderStyle = {
 
-            <div className="loader">
-                <div className="loader-container">
-                    <i className="fa-regular fa-circle fa-bounce" style={{
-                        color: "white"
-                    }}></i>
-                </div>
+    }
+return (
+    <>
+        <div className="loader">
+            <div className="loader-container">
+                <FaCircleNotch className='rotate-infinite' />
             </div>
-        </>
-    )
+        </div>
+    </>
+)
 }
 
 export default Loader

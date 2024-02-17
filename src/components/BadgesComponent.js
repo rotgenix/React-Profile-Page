@@ -4,20 +4,13 @@ import axios from 'axios';
 import BadgeImageComponent from './BadgeImageComponent';
 import '../styles/BadgeComponent.css'
 import BadgeInformation from './BadgeInformation';
+import Loader from './Loader';
 
 const BadgesComponent = ({ loading }) => {
-
+    const [loader, setLoader] = useState(true);
     const [badges, setBadges] = useState([]);
     const [badgeInfo, setBadgeInfo] = useState({});
-    const badgeDetailInitialPosition = {
-        position: "absolute",
-        top: "-100px",
-    }
-    const badgeDetailFinalPosition = {
-        position: "absolute",
-        top: "100px",
-    }
-
+   
     const [finalPosition, setFinalPosition] = useState(false);
 
     const badgesOptions = {
@@ -36,30 +29,33 @@ const BadgesComponent = ({ loading }) => {
             // Badges
             const badges = await axios.request(badgesOptions);
             setBadges(badges.data.data);
+            setLoader(false);
         }
         fetchBadges();
     }, []);
 
     return (
         <>
-            <div className='badgesContainer'>
-                {
-                    badges.map((value, index) => {
-                        return (
-                            <button onClick={() => {
-                                setFinalPosition((prev) => !prev);
-                                setBadgeInfo(value);
-                            }} key={index} className='badge-card'>
-                                <BadgeImageComponent imgUrl={value.imageUrl} />
-                            </button>
-                        )
-                    })
-                }
+            {
+                loader ? <Loader /> : <div className='badgesContainer'>
+                    {
+                        badges.map((value, index) => {
+                            return (
+                                <button onClick={() => {
+                                    setBadgeInfo(value);
+                                    setFinalPosition((prev) => !prev);
+                                }} key={index} className='badge-card'>
+                                    <BadgeImageComponent imgUrl={value.imageUrl} />
+                                </button>
+                            )
+                        })
+                    }
 
-                {
-                    finalPosition ? <BadgeInformation badgeInfo={badgeInfo} finalPosition={finalPosition} setFinalPosition={setFinalPosition} /> : ""
-                }
-            </div>
+                    {
+                        finalPosition ? <BadgeInformation badgeInfo={badgeInfo} finalPosition={finalPosition} setFinalPosition={setFinalPosition} /> : ""
+                    }
+                </div>
+            }
         </>
     )
 }
